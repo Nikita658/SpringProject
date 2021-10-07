@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<table border="1" align="center">
+    <tr>
+        <th>Race ID</th>
+        <th>Current Date</th>
+        <th>Bet Horse</th>
+        <th>Horse Place</th>
+        <th>Detail</th>
+    </tr>
+    <span th:if="${amount == 0 || horseNum == 0}">
+        <h2 align="center">Sorry, something went wrong. Try again</h2>
+    </span>
+
+    <h3><a href="http://localhost:8080/race/start">Start new race</a></h3>
+    <h1 align="center">Statistic of all races and winners</h1>
+    <h1 align="center">Current amount of races is <span th:utext="${races.size()}"></span></h1>
+    <tr th:each="race : ${races}">
+        <td th:utext="${race.getId()}">Race ID</td>
+        <td th:utext="${race.getCurrentDate()}">Current Date</td>
+        <td th:utext="${betHorse.get(race.getId() - 1).getBetHorse().getHorseId()}">Bet Horse</td>
+        <td th:utext="${betHorse.get(race.getId() - 1).getBetHorse().getPlace()}">Horse Place</td>
+        <td><a th:href="@{'http://localhost:8080/race/' + ${race.getId()}}">Detail</a></td>
+    </tr>
+</table>
+</body>
+</html>

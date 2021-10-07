@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Statistic of chosen race</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<table border="1" , align="center">
+    <thead>
+    <tr>
+        <th> ID</th>
+        <th> Date</th>
+        <th> Horse amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td><span th:text="${race.get().getId()}"> ID </span></td>
+    <td><span th:text="${race.get().getCurrentDate()}"> date </span></td>
+    <td><span th:text="${race.get().getHorses().size()}"> Horse amount </span></td>
+    </tbody>
+</table>
+<table border="1" , align="center">
+    <thead>
+    <tr>
+        <th> ID</th>
+        <th> Place</th>
+        <th> Is bet</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="horse : ${race.get().getHorses()}">
+        <td><span th:text="${horse.getHorseId()}"> ID </span></td>
+        <td><span th:text="${horse.getPlace()}"> Place </span></td>
+        <td><span th:text="${horse.isBet()}"> Is bet </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
